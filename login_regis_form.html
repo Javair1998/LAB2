@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Data</title>
+    <link rel="stylesheet" href="Al_CCS.css">
+</head>
+<body>
+    <h1>Stored Login Attempts</h1>
+    <div id="loginData"></div>
+
+    <script>
+        
+        const loginAttempts = JSON.parse(localStorage.getItem('loginAttempts')) || [];
+        let loginDataHtml = "";
+
+        loginAttempts.forEach(attempt => {
+            loginDataHtml += `<p>Username: ${attempt.username}, Password: ${attempt.password}, Status: ${attempt.status}</p>`;
+        });
+
+        document.getElementById('loginData').innerHTML = loginDataHtml;
+    </script>
+</body>
+</html>

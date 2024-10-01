@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al's Hotel Reservation</title>
+    <link rel="stylesheet" href="Al_CCS.css">
+</head>
+<body>
+    <h1>Al's Hotel Reservation Form</h1>
+    <form id="reservationForm">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required><br>
+
+        <label for="checkin">Check-in Date:</label>
+        <input type="date" id="checkin" required><br>
+
+        <label for="checkout">Check-out Date:</label>
+        <input type="date" id="checkout" required><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <h2>Reservation Details:</h2>
+    <p id="reservationDetails"></p>
+
+    <script>
+        document.getElementById('reservationForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const checkin = document.getElementById('checkin').value;
+            const checkout = document.getElementById('checkout').value;
+            
+            
+            const details = `Name: ${name}, Email: ${email}, Check-in: ${checkin}, Check-out: ${checkout}`;
+            document.getElementById('reservationDetails').innerText = details;
+
+            
+            const reservationData = {
+                name: name,
+                email: email,
+                checkin: checkin,
+                checkout: checkout
+            };
+            localStorage.setItem('reservation', JSON.stringify(reservationData));
+
+            
+            window.location.href = "contact_form_data.html";
+        });
+    </script>
+</body>
+</html>

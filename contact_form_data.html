@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Data</title>
+    <link rel="stylesheet" href="Al_CCS.css">
+</head>
+<body>
+    <h1>Stored Reservation Data</h1>
+    <p id="storedData"></p>
+
+    <script>
+        
+        const reservation = JSON.parse(localStorage.getItem('reservation'));
+        if (reservation) {
+            const details = `Name: ${reservation.name}, Email: ${reservation.email}, Check-in: ${reservation.checkin}, Check-out: ${reservation.checkout}`;
+            document.getElementById('storedData').innerText = details;
+        } else {
+            document.getElementById('storedData').innerText = "No data found!";
+        }
+    </script>
+</body>
+</html>
